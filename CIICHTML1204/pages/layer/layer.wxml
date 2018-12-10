@@ -1,0 +1,21 @@
+  <!--弹窗-->
+<template name="layer123">
+  <!-- <view class="Pop_up_layer zan-dialog--show2" > -->
+  <view class="Pop_up_layer {{ showDialog2 ? 'zan-dialog--show2' : '' }}" >
+    <view class="layer_cent">
+      <view class="Pop_up_cont Pop_up_cont2">
+        <view class="layer_con" style="text-align:center;">
+          <text>用户信息已失效，点击重新授权。</text>
+        </view>
+        
+      </view>
+     
+      <button open-type="getUserInfo" lang="zh_CN"  data-pages = "{{path}}" bindgetuserinfo="wxLogin2" class="clock_but">
+        <view class="clock" bindtap='affTrue'>确定</view>
+      </button>
+    </view>
+		
+	</view>
+</template>
+	
+

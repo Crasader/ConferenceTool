@@ -1,0 +1,23 @@
+<!--pages/welcome1/welcome1.wxml-->
+<view style='height:100%;position: relative;' bindtouchstart='touchStart' bindtouchend="touchEnd">
+   
+    <image src="{{conference_img}}" style="width:100%;height:100%;position:fixed;left:0;top:0;z-index:-1;"></image>
+   <!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+      <image wx:if="{{!welcome}}"src="/imgs/r.png" class="click"></image>
+   </button> -->
+   <view class='dot'><icon class='on'></icon><icon></icon></view>
+
+</view>
+
+	<!-- <view class="Pop_up_layer {{ showDialog ? 'zan-dialog--show' : '' }}" >
+    <view class="layer_cent">
+      <view class="Pop_up_cont Pop_up_cont2">
+        <view style="layer_con" style="width:100%;text-align:center;">
+          <text>{{mes}}</text>
+        </view>
+          <button class="close" hover-class='none' bindtap="close"><image src="/imgs/close.png"></image></button>
+      </view>
+    </view>
+
+	</view> -->
+

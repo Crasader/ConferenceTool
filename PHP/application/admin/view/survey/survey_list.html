@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>问卷列表
+                            <a href="{:url('survey/index',['conference_id'=>$Request.param.conference_id])}" class="btn btn-success">新建问卷</a>
+                        </h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <form action="" method="get">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="搜索标题..." name="search" value="{$search}">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" id="search-btn">Go!</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_content">
+                {empty name="list"}
+                <div class="no-data">o(╥﹏╥)o 暂无数据</div>
+                {else /}
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action my-table">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">ID </th>
+                                <th class="column-title">问卷名称 </th>
+                                <th class="column-title">议程 </th>
+                                <th class="column-title">状态 </th>
+                                <th class="column-title">创建时间 </th>
+                                <th class="column-title no-link last">操作 </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {volist name="list" id="vo"}
+                            <tr class="odd pointer">
+                                <td class=" ">{$vo.id}</td>
+                                <td class=" ">{$vo.survey_title}</td>
+                                <td class=" ">{$vo.agenda.title}</td>
+                                <td class=" ">{$vo.status}</td>
+                                <td class=" ">{$vo.created_at}</td>
+                                <td class=" ">
+                                    <a href="{:url('survey/index',['conference_id'=>$Request.param.conference_id,'sid'=>$vo.id])}" class="btn btn-primary">查看</a>
+                                    <a href="#" class="btn btn-danger del-btn" type="button" data-sid="{$vo.id}">删除</a>
+                                </td>
+                            </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pages">
+                    {:$list->render()}
+                </div>
+                {/empty}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('#search-btn').on('click',function(){
+            //var content = $(this).parent().prev().val();
+            //if(!$.trim(content)) return false;
+
+            $(this).parents('form').submit();
+        })
+
+        $('.del-btn').on('click',function(){
+            layer.load(0, {shade: false});
+            var sid = $(this).data('sid');
+            $.ajax({
+                type:'POST',
+                url:'{:url("survey/surveyUsed")}',
+                dataType:'json',
+                data:{sid:$(this).data('sid')},
+                success:function(res){
+                    layer.closeAll();
+                    if(res.code=='201' || res.code=='200'){
+                        layer.confirm(
+                            res.code=='201'?'<b style="color:red">该问卷已被回答过，如果删除将丢失数据，是否确定删除？</b>':'该操作不可恢复，是否确认删除?',
+                            {icon: 3, title: '提示'},
+                            function(){
+                                confirm_del(sid);
+                            });
+                    }
+                },
+                error:function () {
+                    layer.closeAll();
+                    layer.msg('通信失败',{time: 5000, icon:2})
+                }
+            });
+        })
+    })
+
+    function confirm_del(sid){
+        $.ajax({
+            type:'POST',
+            url:'{:url("survey/delete")}',
+            dataType:'json',
+            data:{sid:sid},
+            success:function(res){
+                layer.closeAll();
+                if(res.code=='200'){
+                    layer.msg('删除成功',{time: 2000, icon:1},function(){
+                        window.location.reload();
+                    })
+                }else{
+                    layer.msg('删除失败',{time: 5000, icon:2})
+                }
+            },
+            error:function () {
+                layer.closeAll();
+                layer.msg('删除失败',{time: 5000, icon:2})
+            }
+        });
+    }
+</script>

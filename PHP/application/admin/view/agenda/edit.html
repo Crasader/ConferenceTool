@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>编辑议程</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_content">
+                <form  id="submitForm" class="form-horizontal form-label-left" novalidate>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >议程名称 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="title" placeholder="请输入议程名称..." required="required" type="text" value="{$agenda.title}">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >演讲者 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="lecturer" placeholder="请输入演讲者..." required="required" type="text" value="{$agenda.lecturer}">
+                        </div>
+                    </div>
+
+                    <!--<div class="item form-group">-->
+                    <!--<label class="control-label col-md-3 col-sm-3 col-xs-12" >议程介绍-->
+                    <!--&lt;!&ndash;<label class="control-label col-md-3 col-sm-3 col-xs-12" >议程介绍 <span class="required">*</span>&ndash;&gt;-->
+                    <!--</label>-->
+                    <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                    <!--<textarea id="textarea" required="required" name="description" class="form-control col-md-7 col-xs-12"></textarea>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-6" for="name">开始时间 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker_1">
+                                    <input type="text" name="start_time" class="form-control" value="{$agenda.start_time}" >
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-6" for="name">结束时间 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker_2">
+                                    <input type="text" name="expired_time" class="form-control" value="{$agenda.expired_time}"  >
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >会议室地址 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="address" placeholder="请输入会议室地址..." required="required" type="text" value="{$agenda.address}">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >排序 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="sort_order" placeholder="值越小排名越靠前" required="required" type="number" value="{$agenda.sort_order}" oninput="if(value.length>3)value=value.slice(0,3);value=value.replace(/[\.-]/g,'')
+">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <input type="hidden" name="id" value="{$agenda.id}">
+                            <button  type="button" onclick="create.submit()"  class="btn btn-success">提交</button>
+                            <button  type="button" onclick="history.go(-1)"  class="btn btn-success">返回</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/js/agenda/create.js"></script>
+<script>
+//    let uploadUrl = "{:url('Upload/upload')}";
+    let submitUrl = "{:url('save')}";
+    $(function () {
+        $('#datetimepicker_1,#datetimepicker_2').datetimepicker({
+            format: 'HH:mm',
+        });
+    });
+
+
+
+</script>

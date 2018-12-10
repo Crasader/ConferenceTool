@@ -1,0 +1,208 @@
+/* pages/welcome2/welcome2.wxss */
+page{
+   height: 100%;
+}
+.step{position: absolute;width: 50%;height: 200rpx;right: 0;top: 0;}
+.step image, .step-1, .step-2{width: 45rpx;height: 18rpx;position: absolute;}
+.step image:nth-child(1){top: 15rpx;right: 0;}
+.step image:nth-child(2){top: 50rpx;right: 50rpx;}
+.step image:nth-child(3){top: 15rpx;right: 100rpx;}
+.step image:nth-child(4){top: 50rpx;right: 160rpx;transform: rotate(-30deg);}
+.step image:nth-child(5){top: 40rpx;right: 212rpx;transform: rotate(-70deg);}
+.step image:nth-child(6){top: 105rpx;right: 203rpx;transform: rotate(-90deg);}
+.step image:nth-child(7){top: 130rpx;right: 240rpx;transform: rotate(-90deg);}
+
+
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+.clear{
+  clear:both;
+}
+.urlico image{
+  width:59rpx;
+  height: 76rpx;
+}
+.ico image{
+  width:66rpx;
+  height:145rpx;
+}
+.map{
+    background:url("https://shanghaiciic.ulcampaign.com/miniProgramImg/20181204/show.png") no-repeat;
+  background-size:59rpx 76rpx;
+}
+.map_on{
+    background:url("https://shanghaiciic.ulcampaign.com/miniProgramImg/20181204/show_on.png") no-repeat;
+  background-size:79rpx 95rpx;
+  background-position-x: 10rpx;
+  background-position-y: 10rpx;
+}
+.map1{
+  width:200rpx;
+  background-position: 0 65rpx;
+  position: absolute;
+  top:150rpx;
+  right:140rpx;
+}
+
+
+.name{
+  color:#224d80;
+  font-size:30rpx;
+}
+.map1 .ico{
+  margin-right:25rpx;
+}
+.map2{
+    width:380rpx;
+  background-position: 157rpx 43rpx;
+  position: absolute;
+  top:218rpx;
+  left:18rpx;
+}
+.map2 .left image{
+  width:142rpx;
+  height:239rpx;
+}
+.map2 .right{
+  position: absolute;
+top:135rpx;
+left:157rpx;
+}
+.map2_pos{
+  position: relative;
+}
+.map3{
+width:300rpx;
+  right:38rpx;
+  top:380rpx;
+  background-position-y: 120rpx;
+}
+.map3 .right image{
+  width:195rpx;
+  height: 200rpx;
+}
+.map4{
+  top:550rpx;
+  background-position:220rpx 53rpx;
+width:460rpx;
+}
+.map4 .left image{
+  width:224rpx;
+  height:250rpx;
+}
+.map4 .right{
+  top:155rpx;
+left:220rpx;
+}
+.map5{
+top:720rpx;
+width:270rpx;
+right:85rpx;
+background-position:0 90rpx;
+
+}
+.map5 .right image{
+  width:167rpx;
+  height: 172rpx;
+}
+.map6 image{
+  width:272rpx;
+  height: 250rpx;
+  display: block;
+   margin-left:20rpx;
+}
+.map6{
+   width:320rpx;
+  background-position: 0rpx 170rpx;
+  position: absolute;
+  bottom:50rpx;
+  left:35rpx;
+}
+
+.dot{width: 78rpx;height: 24rpx;position: absolute;bottom: 30rpx;left: 50%;transform: translate(-50%,0);}
+.dot icon{width: 24rpx;height: 24rpx;border-radius: 50%;background: rgba(255, 255, 255, .3);vertical-align: top;}
+.dot icon:first-child{margin-right: 30rpx;}
+.dot .on{background: rgba(255, 255, 255, 1)}
+.click-into{width: 200rpx;height: 74rpx;position: absolute;bottom: 30rpx;right: 30rpx;}
+
+/* iphone X */
+.activeX .map3{right: 10rpx;top: 430rpx;}
+.activeX .map4{top:600rpx;}
+.activeX .map5{right: 50rpx;top:780rpx;}
+.activeX .map5 .step-1{left: -130rpx;top: 170rpx;}
+.activeX .map5 .step-2{left: -65rpx;}
+.activeX .map6{bottom: 180rpx;}
+
+
+.map1 .step-1{left: -130rpx;top: 150rpx;}
+.map1 .step-2{left: -96rpx;top: 180rpx;}
+
+.map2 .step-1{left: 80rpx;bottom: -40rpx;transform: rotate(-90deg);}
+.map2 .step-2{left: 48rpx;bottom: -80rpx;transform: rotate(-90deg);}
+
+.map4 .step-1{left: 300rpx;top: 40rpx;transform: rotate(-180deg);}
+.map4 .step-2{left: 330rpx;top: 75rpx;transform: rotate(-180deg);}
+
+.map3 .step-1{left: 165rpx;top: 270rpx;transform: rotate(-90deg);}
+.map3 .step-2{left: 130rpx;top: 300rpx;transform: rotate(-90deg);}
+
+.map5 .step-1{left: -90rpx;top: 160rpx;transform: rotate(-40deg);}
+.map5 .step-2{left: -45rpx;top: 175rpx;transform: rotate(-40deg);}
+
+
+.animate .step image{opacity: 0;transition: all .6s;}
+.animate .step image:nth-child(1){transform: translate(50rpx,0);}
+.animate .step image:nth-child(2){transform: translate(50rpx,0);transition-delay: .3s;}
+.animate .step image:nth-child(3){transform: translate(50rpx,0);transition-delay: .6s;}
+.animate .step image:nth-child(4){transform: translate(50rpx,0) rotate(-30deg);transition-delay: .9s;}
+.animate .step image:nth-child(5){transform: translate(0,-50rpx) rotate(-70deg);transition-delay: 1.2s;}
+.animate .step image:nth-child(6){transform: translate(0,-50rpx) rotate(-90deg);transition-delay: 1.5s;}
+.animate .step image:nth-child(7){transform: translate(0,-50rpx) rotate(-90deg);transition-delay: 1.8s;}
+
+.animate .map, .animate .map .step-1, .animate .map .step-2{opacity: 0;transition: all .6s;}
+.animate .active1{transform: translate(0,-50rpx);transition-delay: 2.1s;}
+.animate .active1 .step-1{transform: translate(50rpx,0);transition-delay: 2.4s;}
+.animate .active1 .step-2{transform: translate(50rpx,0);transition-delay: 2.7s;}
+
+.animate .active2{transform: translate(-50rpx,0);transition-delay: 3.0s;}
+.animate .active2 .step-1{transform: translate(0,-50rpx) rotate(-90deg);transition-delay: 3.3s;}
+.animate .active2 .step-2{transform: translate(0,-50rpx) rotate(-90deg);transition-delay: 3.6s;}
+
+.animate .active3{transform: translate(-50rpx,0);transition-delay: 3.9s;}
+.animate .active3 .step-1{transform: translate(-50rpx,0) rotate(-180deg);transition-delay: 4.2s;}
+.animate .active3 .step-2{transform: translate(-50rpx,0) rotate(-180deg);transition-delay: 4.5s;}
+
+.animate .active4{transform: translate(50rpx,0);transition-delay: 4.8s;}
+.animate .active4 .step-1{transform: translate(0,-50rpx) rotate(-90deg);transition-delay: 5.1s;}
+.animate .active4 .step-2{transform: translate(0,-50rpx) rotate(-90deg);transition-delay: 5.4s;}
+
+.animate .active5{transform: translate(50rpx,0);transition-delay: 5.7s;}
+.animate .active5 .step-1{transform: translate(50rpx,0) rotate(-40deg);transition-delay: 6.0s;}
+.animate .active5 .step-2{transform: translate(50rpx,0) rotate(-40deg);transition-delay: 6.3s;}
+
+.animate .active6{transform: translate(50rpx,0);transition-delay: 6.6s;}
+
+
+.animate.active .step image:nth-child(1), .animate.active .step image:nth-child(2), .animate.active .step image:nth-child(3){transform: translate(0,0);opacity: 1;}
+.animate.active .step image:nth-child(4){transform: translate(0,0) rotate(-30deg);opacity: 1;}
+.animate.active .step image:nth-child(5){transform: translate(0,0) rotate(-70deg);opacity: 1;}
+.animate.active .step image:nth-child(6){transform: translate(0,0) rotate(-90deg);opacity: 1;}
+.animate.active .step image:nth-child(7){transform: translate(0,0) rotate(-90deg);opacity: 1;}
+
+.animate.active .active1, .animate.active .active1 .step-1, .animate.active .active1 .step-2{transform: translate(0,0);opacity: 1;}
+.animate.active .active2, .animate.active .active3, .animate.active .active4, .animate.active .active5, .animate.active .active6{transform: translate(0,0);opacity: 1;}
+.animate.active .active2 .step-1, .animate.active .active2 .step-2{transform: translate(0,0) rotate(-90deg);opacity: 1;}
+
+.animate.active .active3 .step-1, .animate.active .active3 .step-2{transform: translate(0,0)  rotate(-180deg);opacity: 1;}
+
+.animate.active .active4 .step-1, .animate.active .active4 .step-2{transform: translate(0,0) rotate(-90deg);opacity: 1;}
+
+.animate.active .active5 .step-1, .animate.active .active5 .step-2{transform: translate(0,0) rotate(-40deg);opacity: 1;}
+
+
+
+

@@ -1,0 +1,257 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CiiC问卷统计</title>
+    <script src="__STATIC__/survey/js/echarts.min.js"></script>
+    <script src="__STATIC__/survey/js/jquery.min.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html{
+            font-size: 100px;
+        }
+        body{
+            background:url("__STATIC__/survey/imgs/big_screen.jpg") no-repeat center center fixed;
+            background-size: cover;
+        }
+        .dis{
+            display: flex;
+            padding:0.4rem 0 0.4rem 0;
+            width:14.11rem;
+            margin:0 auto
+        }
+        .fil{
+
+            width:2rem;
+            height: 1.21rem;
+            margin-right:1.2rem;
+        }
+        .fil img{
+            width:2rem;
+            height: 1.21em;
+        }
+        .title{
+            flex:1;
+            margin-right: 3rem;
+            font-size: 0.5rem;
+
+
+        }
+        .title p {
+            background: linear-gradient(to top, #36bade, #8dc63f);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            text-align: center;
+        }
+        .content_box{
+            padding: 0 0.95rem;
+        }
+        .content{
+            background: url("__STATIC__/survey/imgs/content_bj.png") no-repeat;
+            background-size:100% 100%;
+            width: 100%;
+            height: -moz-calc(100vh -5rem);
+            height: -webkit-calc(100vh -5rem);
+            height:calc(100vh -5rem);
+            margin:0 auto;
+            /*margin-bottom:0.6rem;*/
+        }
+        .clear{
+            clear:both;
+        }
+        .last, .next{
+            padding:0 0.4rem;
+            background:#73b020;
+            display: inline-block;
+            border-radius: 10px;
+        }
+        .next{
+            margin-left:0.5rem;
+        }
+        .button_box{
+            margin-top:0.2rem;
+            margin-bottom:0.1rem;
+            text-align: center;
+            color:#fff;
+            font-size: 0.3rem;
+
+        }
+        .button_box a{
+            height: 0.55rem;
+            text-decoration: none;
+            color: #fff;
+        }
+        .button_box .last div, .button_box .next div{
+            height:0.55rem;
+            line-height: 0.6rem;
+        }
+
+    </style>
+</head>
+<body>
+<div class="dis">
+    <div class="fil">
+        <img src="__STATIC__/survey/imgs/logo.png" />
+    </div>
+    <div class="title">
+        <p>{$title}</p>
+    </div>
+</div>
+<div class="content_box">
+    <div class="content">
+        <div id="main" style="width:100%;height:46vh;padding-top: 10vh;padding-bottom:3vh;"></div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                textStyle:{
+                    //top文字的颜色
+                    fontSize:20,
+                    color:'#fff'
+                },
+                tooltip: {},
+                xAxis: {
+                    axisLabel:{
+                        //设置x坐标的内容全部显示
+                        interArrival:0,
+                        // rotate:-30,
+                        textStyle: {
+                            color: '#FFFFFF',
+                            fontSize:13,
+                        },
+                        formatter (params) {
+                            return params.replace(/.{6}(?!$)/g, (a) => a + '\n')
+                        },
+
+                    },
+
+                    axisLine: {
+                        show:false,
+                        textStyle:{
+                            color:"#0087ED",
+                            fontSize:30,
+                        }
+                    },
+                    axisTick: {show:false},
+                    nameTextStyle:{
+                        //---坐标轴名称样式
+                        color:"#fff",
+                        //---坐标轴名称相对位置
+                        padding:[5,0,0,-5],
+                    },
+                    data: {$options|raw},
+                },
+                yAxis: {
+                    axisLabel : {
+                        formatter: function(){
+                            return "";
+                        }
+                    },
+                    axisLine: {show:false},
+                    axisTick: {show:false},
+                    splitLine: {
+                        //网格线
+                        "show": false
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10 + 100;
+                    },
+                },
+                //animationEasing: 'elasticOut',
+                //animationDelayUpdate: function (idx) {
+                //        return idx * 5;
+                //    },
+
+                series: [{
+                    name: '投票',
+                    type: 'bar',
+//                    barWidth: 102,
+                    label: {
+
+                        show: true,
+                        position: 'top',
+
+                    },markPoint: {
+                        formatter: function(params){
+                            return '<img src="'
+                                + params.data.symbol.replace('image://', '')
+                                + '"/>';
+                        },
+                        symbolSize:'15',
+                        symbolOffset:[-20,-20],
+                        symbol:'image://__STATIC__/survey/imgs/hand.png',
+                        data: {$data|raw},
+
+                        label:{
+                            show:true,
+                            position:'middle',
+                        },
+                    },
+                    itemStyle: {
+                        normal: {
+                            //渐变
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    {offset: 0, color: '#22b0e3'},
+                                    {offset: 0.5, color: '#4cba95'},
+                                    {offset: 1, color: '#84c82c'}
+                                ]
+                            )
+                        },
+                        emphasis: {
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    {offset: 0, color: '#1db3e9'},
+                                    {offset: 0.7, color: '#4cba95'},
+                                    {offset: 1, color: '#84c82c'}
+                                ]
+                            )
+                        }
+                    },
+                    data: {$num_data|raw},
+                }],
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+    </div>
+    <div class="button_box">
+        {if $res->currentPage() neq 1}
+        <a class="last" href="?page={$res->currentPage()-1}"><div>< 上一题</div></a>
+        {/if}
+        {if $res->currentPage() neq $res->lastPage()}
+        <a class="next" href="?page={$res->currentPage()+1}"><div>下一题 ></div></a>
+        {/if}
+        <div class="clear"></div>
+    </div>
+</div>
+<script>
+    (function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 1600) + 'px';
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+    window.onresize = myChart.resize;
+
+</script>
+</body>
+</html>

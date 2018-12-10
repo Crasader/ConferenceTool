@@ -1,0 +1,7 @@
+<!--pages/assets/assets.wxml-->
+<web-view src="{{url}}"></web-view>
+
+<!--弹窗-->
+ <!-- 声明需要使用的模板文件 -->
+<import src ="/pages/layer/layer.wxml"/>
+<template is="layer123" data="{{showDialog2:showDialog2,path:'/pages/index/index'}}" />

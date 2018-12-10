@@ -1,0 +1,8 @@
+22
+
+ <view class="footer">
+    <navigator class="nav nav1" hover-class='nav_on nav_on1'  url="/pages/index/index">会议日程</navigator>
+    <navigator  class="nav nav2 nav_on" hover-class='nav_on nav_on2' url="/pages/Scan/Scan">扫一扫</navigator>
+    <navigator  class="nav nav3" hover-class='nav_on nav_on3'  url="/pages/meet_data/meet_data">会议资料</navigator>
+    <view class="clear"></view>
+  </view>

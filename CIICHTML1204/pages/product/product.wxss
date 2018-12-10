@@ -1,0 +1,59 @@
+/* pages/a/a.wxss */
+.myVideo{ 
+  width:100%;
+  height: calc(9 * 750rpx / 16);
+  background-color: #fff;
+  position: absolute;
+  z-index: 10000;
+}
+.controls{
+  position:absolute;
+  z-index:1; 
+  /* background-color: #fff;     */
+  height: calc(9 * 750rpx / 16); 
+   /* margin-top:-430rpx; */
+  width:100%;
+  top:0;
+  left:0;
+
+}
+.play{ 
+    position:absolute;
+    width:80rpx;
+    height:80rpx;
+    left:50%;
+    top:50%;
+    margin-top:-40rpx;
+    margin-left:-40rpx;
+}
+.play.hide{
+  display: none;
+}
+.video{
+  position: relative;
+  height:calc(9 * 750rpx / 16);
+
+}
+.product_img image{
+  display: block;
+  width:100%;
+}
+
+/* 立顿按钮样式 */
+.ld_btn{
+  width: 320rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #09b389;
+  font-size: 30rpx;
+  color:#fff;
+  bottom: 50rpx;
+  position: fixed;
+  left: 50%;
+  margin-left: -160rpx;
+}
+.cover-image{
+  width:64rpx;
+  height:64rpx;
+  
+}

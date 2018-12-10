@@ -1,0 +1,22 @@
+/* pages/welcome1/welcome1.wxss */
+page{
+   height: 100%;
+}
+button{
+  padding:0;
+  margin:0;
+position: absolute;
+  bottom:250rpx;
+   left:50%;
+    margin-left:-144.5rpx;
+}
+.click{
+  display: block;
+  z-index: 33;
+  height: 76rpx;
+  width:290rpx;
+}
+.dot{width: 78rpx;height: 24rpx;position: absolute;bottom: 30rpx;left: 50%;transform: translate(-50%,0);}
+.dot icon{width: 24rpx;height: 24rpx;border-radius: 50%;background: rgba(255, 255, 255, .3);vertical-align: top;}
+.dot icon:first-child{margin-right: 30rpx;}
+.dot .on{background: rgba(255, 255, 255, 1)}

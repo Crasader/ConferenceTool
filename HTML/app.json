@@ -1,0 +1,29 @@
+{
+  "pages":[
+    "pages/welcome1/welcome1",
+      "pages/meet_survey/meet_survey",
+    "pages/index/index",
+      
+    "pages/welcome2/welcome2",
+    
+
+         
+    "pages/assets/assets",
+    "pages/product/product",
+
+    
+    
+   
+    "pages/meet_data/meet_data",
+    "pages/a/a",
+    
+    "pages/Scan/Scan",
+    "pages/logs/logs"
+],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

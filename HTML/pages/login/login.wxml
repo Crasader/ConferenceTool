@@ -1,0 +1,4 @@
+<!--pages/login/login.wxml-->
+<text>pages/login/login.wxml</text>
+
+<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>

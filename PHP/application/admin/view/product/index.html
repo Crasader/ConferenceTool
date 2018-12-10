@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>产品列表
+                            <a class="btn btn-success" href="{:url('create',['conference_id'=>input('conference_id')])}">新建产品</a>
+                        </h3>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="x_content">
+                {empty name="list"}
+                <div class="no-data">o(╥﹏╥)o 暂无数据</div>
+                {else /}
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action my-table">
+                        <thead>
+                        <tr class="headings">
+                            <th class="column-title">ID </th>
+                            <th class="column-title">产品名称 </th>
+                            <th class="column-title">品牌名称 </th>
+                            <th class="column-title">品牌Logo</th>
+                            <th class="column-title no-link last">创建时间</th>
+                            <th class="column-title no-link last">更新时间</th>
+                            <th class="column-title no-link last">操作</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {volist name="list" id="vo"}
+                        <tr class="odd pointer">
+                            <td class=" ">{$vo.id}</td>
+                            <td class=" ">{$vo.product_name}</td>
+                            <td class=" ">{$vo.brand}</td>
+                            <td class=" "><img style="width: 60px;height: 60px" src="{$filePath}{$vo.brand_logo}" alt=""></td>
+                            <td class=" ">{$vo.created_at}</td>
+                            <td class=" ">{$vo.updated_at}</td>
+                            <td class=" ">
+                                <a href="{:url('edit',['id'=>$vo.id])}" class="btn btn-primary">编辑</a>
+                                <a href="#" onclick="index.read(this)" data-href="{:url('read',['id'=>$vo.id])}" class="btn btn-primary">详情</a>
+                                <a href="#" onclick="create.delete('{$vo.id}')" class="btn btn-danger">删除</a>
+                            </td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pages">
+                    {:$list->render()}
+                </div>
+                {/empty}
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/js/product/index.js"></script>
+<script src="__STATIC__/js/product/create.js"></script>
+<script>
+    let deleteUrl = "{:url('delete')}";
+</script>

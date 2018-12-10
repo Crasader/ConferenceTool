@@ -1,0 +1,101 @@
+<view class='{{isIphoneX? "activeX" : ""}}'  style='height:100%;position: relative;overflow:hidden' bindtouchstart='touchStart' bindtouchend="touchEnd">
+    <image src="https://shanghaiciic.ulcampaign.com/miniProgramImg/20181204/welcome-xin(1).png" style="width:100%;height:100%;left:0;top:0;"></image>   
+     <view class='dot'><icon></icon><icon class='on'></icon></view>
+     <image bindtap='clickInto' class='click-into' src='/imgs/click-into.png'></image>
+     <!-- <view class='step'>
+      <image src='/imgs/step-1.png'></image>
+      <image src='/imgs/step-1.png'></image>
+      <image src='/imgs/step-1.png'></image>
+      <image src='/imgs/step-1.png'></image>
+      <image src='/imgs/step-1.png'></image>
+      <image src='/imgs/step-1.png'></image>
+      <image src='/imgs/step-1.png'></image>
+    </view>
+    <view>
+      <view class="map map1 {{num>2 ? 'map_on':''}} active1">
+        <view>
+          <view class="ico right">
+            <image src="/imgs/ip.png"></image>
+          </view>
+          <view class="clear"></view>
+        </view>
+        <view class="name">
+          <view>Entrance </view>
+          <view>扫码进入 </view>
+        </view>
+         <image class='step-1' src='/imgs/step-1.png'></image>
+         <image class='step-2' src='/imgs/step-1.png'></image>
+      </view>
+
+      <view class="map map2 {{num>4 ? 'map_on':''}} active2">
+        <view class="map2_pos">
+          <view class="left">
+            <image src="/imgs/uslp.png"></image>
+          </view>
+          <view class="name right">
+            <view>USLP</view>
+            <view>联合利华</view>
+            <view>可持续发展计划</view>
+          </view>
+          <view class="clear"></view>
+        </view>
+         <image class='step-1' src='/imgs/step-1.png'></image>
+         <image class='step-2' src='/imgs/step-1.png'></image>
+      </view>
+
+      <view class="map map1 map3 {{num>6 ? 'map_on':''}} active4">
+        <view>
+          <view class="ico right">
+            <image src="/imgs/center.png"></image>
+          </view>
+          <view class="clear"></view>
+        </view>
+        <view class="name">
+          <view>Knowledge Center</view>
+          <view>会议互动</view>
+        </view>
+         <image class='step-1' src='/imgs/step-1.png'></image>
+         <image class='step-2' src='/imgs/step-1.png'></image>
+      </view>
+
+      <view class="map map2 map4 {{num>8 ? 'map_on':''}} active3">
+        <view class="map2_pos">
+          <view class="left">
+            <image src="/imgs/case.png"></image>
+          </view>
+          <view class="name right">
+            <view>Best Practice</view>
+            <view>最佳案例分享</view>
+          </view>
+          <view class="clear"></view>
+        </view>
+         <image class='step-1' src='/imgs/step-1.png'></image>
+         <image class='step-2' src='/imgs/step-1.png'></image>
+      </view>
+
+      <view class="map map1 map5 {{num>10 ? 'map_on':''}} active5">
+        <view>
+          <view class="ico right">
+            <image src="/imgs/brand.png"></image>
+          </view>
+          <view class="clear"></view>
+        </view>
+        <view class="name">
+          <view>Brand Station</view>
+          <view>产品探索</view>
+        </view>
+        <image class='step-1' src='/imgs/step-1.png'></image>
+         <image class='step-2' src='/imgs/step-1.png'></image>
+      </view>
+
+      <view class="map map6 {{num>12 ? 'map_on':''}} active6">
+        <view>
+          <image src="/imgs/lab.png"></image>
+        </view>
+        <view class="name">
+          <view> Smart New Retail Lab</view>
+          <view> 智慧新零售实验室</view>
+        </view>
+      </view>
+    </view> -->
+</view>

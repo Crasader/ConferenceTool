@@ -1,0 +1,274 @@
+<!--<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>题库列表</h3>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="搜索...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>{$qid?'编辑':'新建'}题目</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_content">
+                <form class="form-horizontal form-label-left" novalidate id="question-form">
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">问题标题 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                                   data-validate-words="2" name="title" placeholder="请输入问题标题..." required="required"
+                                   type="text" value="{$data.title??''}">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">问题类型 <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="flat" name="question_type" value="1" checked> 单选题
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="flat" name="question_type" value="2"> 多选题
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="flat" name="question_type" value="0"> 填空题
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">是否启用 <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="flat" checked="checked" name="status" value="1"> 启用
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="flat" name="status" value="0"> 不启用
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">选项
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div id="options">
+                                {empty name="data"}
+                                <div class="option-section">
+                                    <textarea name="option_text[]" class="form-control col-md-7 col-xs-12" placeholder="请输入选项内容..."></textarea>
+                                    <span class="btn btn-success file-button">
+                                        <span>上传图片</span>
+                                        <input type="file" onchange="Upload.Upload(this)">
+                                    </span>
+                                    <span>
+                                        <input type="hidden" name="option_img[]" value="">
+                                        <img class="upload-img" src="" alt="">
+                                        <a href="#" class="del-img-btn" style="display:none;"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                    </span>
+                                    <div class="clearfix"></div>
+                                    <button class="btn btn-danger btn-block del-btn" type="button">删除该选项</button>
+                                    <hr class="option-hr">
+                                </div>
+                                {else/}
+                                {volist id="vo" name="data.question_options"}
+                                <div class="option-section">
+                                    <textarea name="option_text[]" class="form-control col-md-7 col-xs-12" placeholder="请输入选项内容...">{$vo.option_value}</textarea>
+                                    <span class="btn btn-success file-button">
+                                        <span>上传图片</span>
+                                        <input type="file" onchange="Upload.Upload(this,true)">
+                                    </span>
+                                    <span>
+                                        <input type="hidden" name="option_img[]" value="{$vo.option_media_url}">
+                                        <img class="upload-img" src="{$vo.option_media_url|get_img_url=$filePath}" alt="">
+                                        <a href="#" class="del-img-btn" {if !$vo.option_media_url}style="display:none;"{/if}><i class="fa fa-times" aria-hidden="true"></i></a>
+                                    </span>
+                                    <div class="clearfix"></div>
+                                    <button class="btn btn-danger btn-block del-btn" type="button">删除该选项</button>
+                                    <hr class="option-hr">
+                                </div>
+                                {/volist}
+                                {/empty}
+                            </div>
+
+                            <button class="btn btn-primary add-btn" type="button">添加选项</button>
+
+                        </div>
+                    </div>
+                    <input type="hidden" name="id" value="{$qid}" id="qid">
+                    <input type="hidden" name="change_option" value="0" id="change-option">
+                    {:token()}
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button id="send" type="button" class="btn btn-success">{$qid?'保存':'新建'}</button>
+                            <button type="button" class="btn btn-primary cancel-btn">返回</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="option-section copy-zone">
+    <textarea name="option_text[]" class="form-control col-md-7 col-xs-12" placeholder="请输入选项内容..."></textarea>
+    <span class="btn btn-success file-button">
+        <span>上传图片</span>
+            <input type="file" onchange="Upload.Upload(this,true)">
+        </span>
+        <span>
+            <input type="hidden" name="option_img[]" value="">
+            <img class="upload-img" src="" alt="">
+            <a href="#" class="del-img-btn" style="display: none"><i class="fa fa-times" aria-hidden="true"></i></a>
+        </span>
+    <div class="clearfix"></div>
+    <button class="btn btn-danger btn-block del-btn" type="button">删除该选项</button>
+    <hr class="option-hr">
+</div>
+<script src="__STATIC__/js/sortable/sortable.min.js"></script>
+<script>
+    var uploadUrl = "{:url('Upload/upload')}";
+    var filePath = "{$filePath}";
+
+    var qtype= "{:isset($data.question_type)?$data->getData('question_type'):1}";
+    var qstatus= "{:isset($data.status)?$data->getData('status'):1}";
+
+    $(function(){
+        var this_option;
+
+        $(':radio[name="question_type"][value="'+qtype+'"]').prop('checked',true);
+        $(':radio[name="status"][value="'+qstatus+'"]').prop('checked',true);
+
+        if(qtype==0){
+            $('#options,.add-btn').hide();
+        }
+
+        var qid = $('#qid').val();
+        if(qid==0){
+            $('#change-option').val(1);
+        }else{
+            $.ajax({
+                type:'POST',
+                url:'{:url("question/questionUsed")}',
+                dataType:'json',
+                data:{id:qid},
+                success:function(res){
+                    if(res.code=='201'){
+                        layer.alert('<b style="color: red">注意：</b><br>该问题已被回答过!<br>如果更改可能会影响大屏展示以及其他数据统计。', {
+                            skin: 'layui-layer-molv' //样式类名
+                            ,closeBtn: 0
+                        }, function(){
+                            layer.closeAll();
+                        });
+                    }else{
+
+                    }
+                },
+                error:function () {
+
+                }
+            });
+        }
+
+        $('.add-btn').on('click',function(){
+            $('.option-section.copy-zone').clone(true).removeClass('copy-zone').appendTo('#options');
+            $('#change-option').val(1);
+        })
+
+        $('.del-btn').on('click',function(){
+            this_option = $(this);
+            layer.confirm('确定要删除该选项吗?', {icon: 3, title: '提示'},
+                function (index) {
+                    //do something
+                    this_option.parents('.option-section').detach();
+                    layer.close(index);
+                });
+        })
+
+        //拖动
+        var rlist = document.getElementById('options');
+        var sortable = Sortable.create(rlist, {
+            group:'.option-section',
+            handle:'.option-section',
+            //filter: '.js-remove',
+            animation: 150,
+            ghostClass:'option-moving',
+            draggable: ".option-section",
+            //chosenClass: "option-chosen",  // Class name for the chosen item
+
+        });
+        
+        $('#send').on('click',function () {
+            var data = $('#question-form').serializeArray();
+            $.ajax({
+                type:'POST',
+                url:'{:url("question/save")}',
+                dataType:'json',
+                data:data,
+                success:function(res){
+                    if(res.code=='200'){
+                        layer.msg('操作成功', {time: 2000, icon:6},function(){
+                            window.location.href="{:url('question/questionlist')}";
+                        });
+                    }else{
+                        $('input[name=__token__]').val(res.data.token);
+                        layer.msg(res.msg, {time: 5000, icon:2});
+                    }
+                },
+                error:function () {
+
+                }
+            });
+
+            return false;
+        })
+
+        //注:这个是icheck插件需要使用的事件
+        $(':radio[name="question_type"]').on('ifChecked',function(){
+            if($(this).val()==0){
+                $('#options,.add-btn').hide(800);
+            }else{
+                $('#options,.add-btn').show(800);
+            }
+        })
+
+        $('#options').on('mousedown',function(){
+            $('#change-option').val(1);
+        })
+
+        $('.del-img-btn').on('click',function(e){
+            e.preventDefault();
+            Upload.OnlyDelete(this);
+        })
+
+    })
+</script>

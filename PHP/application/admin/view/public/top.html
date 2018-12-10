@@ -1,0 +1,80 @@
+<div class="top_nav">
+    <div class="nav_menu">
+        <nav>
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="__STATIC__/images/img.jpg" alt="">{$Think.session.adminSession.nick_name}
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                        <!--<li><a href="javascript:;"> Profile</a></li>-->
+                        <!--<li>-->
+                        <!--<a href="javascript:;">-->
+                        <!--<span class="badge bg-red pull-right">50%</span>-->
+                        <!--<span>Settings</span>-->
+                        <!--</a>-->
+                        <!--</li>-->
+                        <!--<li><a href="javascript:;">Help</a></li>-->
+
+                        <li><a href="{:url('conference/create')}"><i class="fa fa-calendar-plus-o fa-2x pull-right" aria-hidden="true"></i>新建会议</a>
+                        <li><a href="{:url('question/questionList')}"><i class="glyphicon glyphicon-book pull-right"></i>题库</a>
+                        <li><a href="{:url('question/index')}"><i class="glyphicon glyphicon-plus-sign pull-right"></i>新建题目</a>
+                        <li><a href="{:url('login/logout')}"><i class="glyphicon glyphicon-off pull-right"></i>退出</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a
+                                    {if $Request.controller == 'Survey'}class = "current-top-button"{/if}
+                                    href="{:url('survey/surveyList',['conference_id'=>$Think.session.conference_id])}">问卷列表</a>
+                            </li>
+                            <li><a
+                                    {if $Request.controller == 'Agenda'}class = "current-top-button"{/if}
+                                    href="{:url('Agenda/index',['conference_id'=>$Think.session.conference_id])}">会议议程</a>
+                            </li>
+                            <li><a
+                                    {if $Request.controller == 'Assets'}class = "current-top-button"{/if}
+                                    href="{:url('Assets/index',['conference_id'=>$Think.session.conference_id])}">会议资料</a>
+                            </li>
+                            <li><a
+                                    {if $Request.controller == 'Product'}class = "current-top-button"{/if}
+                                    href="{:url('Product/index',['conference_id'=>$Think.session.conference_id])}">产品列表</a>
+                            </li>
+                            <!--<li><a href="form_advanced.html">会议介绍</a></li>-->
+
+                            <!--         <li class="dropdown">
+                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">操作 <span class="caret"></span></a>
+                                      <ul class="dropdown-menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">One more separated link</a></li>
+                                      </ul>
+                                    </li> -->
+                        </ul>
+
+
+                    </div><!-- /.navbar-collapse -->
+                </li>
+
+            </ul>
+            </li>
+            </ul>
+        </nav>
+    </div>
+</div>

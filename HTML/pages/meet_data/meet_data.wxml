@@ -1,0 +1,81 @@
+<!--pages/meet_data/meet_data.wxml-->
+<view>
+  <image src="/imgs/index_bj.jpg" style="width:100%;height:100%;position:fixed;left:0;top:0;z-index:-1;"></image>
+
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower"  class="list_box">
+    <!--会义资料-->
+    <view class="a">
+      <view class="title text_align">
+        <text>会议资料</text>
+      </view>
+      <view>
+        <view class="data_bj data_bj_bottom"><image src="/imgs/top.png"></image></view>
+        <view class="data_list">
+          <view class="data_box display" wx:for="{{met}}">
+            <view class="data_name fix">
+              {{item.asset_title}}
+            </view>
+            <button class="clock" bindtap='clock' bindtap="Assets" data-id='{{item.id}}'  data-url='{{item.url}}'>
+              查看
+            </button>
+          </view>
+        </view>
+        
+        <view class="data_bj data_bj_top"><image src="/imgs/bottm.png"></image></view>
+      </view>
+    </view>
+    <!--新品推介-->
+    <view class="a">
+      <view class="title text_align">
+        <text>新品推介</text>
+      </view>
+      <view>
+        <view class="data_bj data_bj_bottom"><image src="/imgs/top.png"></image></view>
+        <view class="data_list">
+          <view class="data_box display"  wx:for="{{prod}}">
+            <view class="data_name fix">
+              {{item.product_name}}
+            </view>
+            <button class="clock" bindtap="Product" data-id='{{item.id}}'>
+              查看
+            </button>
+          </view>
+          
+        </view>
+        
+        <view class="data_bj data_bj_top"><image src="/imgs/bottm.png"></image></view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!--没有记录-->
+  <view class="list_box"  style="display:none">
+    <view class="no_data text_align">
+      <image src="/imgs/no_data.png"></image>
+      <text>您还没有扫码记录，快去扫码吧~</text>
+    </view>
+  </view>
+  <!--底部导航-->
+  <view class="footer">
+    <navigator class="nav nav1" hover-class='nav_on nav_on1'  url="/pages/index/index" open-type="redirect">会议日程</navigator>
+    <view bindtap="click" class="nav nav2" hover-class='nav_on2'></view>
+    <navigator  class="nav nav3  nav_on" hover-class='nav_on nav_on3'  url="/pages/meet_data/meet_data" open-type="redirect">会议资料</navigator>
+    <view class="clear"></view>
+  </view>
+</view>
+
+<!--弹窗2-->
+	<view class="Pop_up_layer {{ showDialog2 ? 'zan-dialog--show2' : '' }}" >
+    <view class="layer_cent">
+      <view class="Pop_up_cont Pop_up_cont2">
+        <view class="layer_con" style="text-align:center;">
+          <text>用户信息已失效，点击重新授权。</text>
+        </view>
+          
+      </view>
+      <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="clock_but">
+        <view class="clock">确定</view>
+      </button>
+    </view>
+		
+	</view>

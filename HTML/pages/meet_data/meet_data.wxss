@@ -1,0 +1,72 @@
+/* pages/meet_data/meet_data.wxss */
+.clock{
+  width:191rpx;
+  height:57rpx;
+  background:url("http://www.dhfjob.com/ycc/mini/clock.png") no-repeat;
+  background-size: cover;
+}
+.nav_on {
+background:url("http://www.dhfjob.com/ycc/mini/meet_data_on.png") no-repeat center top;
+background-size:47rpx 41rpx;
+margin:0 auto;
+padding-top:55rpx;
+
+}
+.title{
+text-shadow: 0 1px #2b9c5f, 1px 0 #2b9c5f, -1px 0 #2b9c5f, 0 -1px #2b9c5f;
+font-size: 34rpx;
+color:#fff;
+padding-top:64rpx;
+padding-bottom:32rpx;
+}
+.list_box{
+width:auto;
+margin-bottom:140rpx;
+overflow:auto;
+height: calc(100vh - 160rpx);
+}
+.list_box .a{
+ padding:0 55rpx 0rpx 50rpx;
+}
+.data_bj image{
+  display: block;
+  width:643rpx;
+  height:49rpx;
+}
+.data_bj_bottom{
+  margin-bottom:17rpx;
+}
+.data_bj_top{
+  margin-top:5rpx;
+}
+.data_box{
+align-items:center;
+font-size:28rpx;
+color:#f3fff3;
+padding:0 42rpx;
+margin-bottom:26rpx;
+}
+.clock{
+  font-size:30rpx;
+  text-shadow: 0 1px #2b9c5f, 1px 0 #2b9c5f, -1px 0 #2b9c5f, 0 -1px #2b9c5f;
+  color:#fff;
+  line-height:61rpx;
+  margin-left:20rpx;
+}
+.no_data{
+  margin-top:220rpx;
+  color:#87d0e7;
+}
+.no_data image{
+  display: block;
+  padding-bottom:60rpx;
+  width:282rpx;
+  height:184rpx;
+  margin:0 auto;
+}
+.Pop_up_cont2{
+  width:453rpx;
+  height:194rpx;
+  background:url("http://www.dhfjob.com/ycc/mini/layer_bj2.png");
+  background-size: cover;
+}

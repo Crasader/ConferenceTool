@@ -1,0 +1,59 @@
+<!--index.wxml-->
+<view>
+  <image src="/imgs/index_bj.jpg" style="width:100%;height:100%;position:fixed;left:0;top:0;z-index:-1;"></image>
+  
+  <!--日程列表-->
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower"  class="list_box">
+    <view class="a"  wx:for="{{array}}">
+      <view class="title text_align">
+        <text>{{item.title}}</text>
+      </view>
+      <view class="meeting_box">
+          <view class= "meeting">
+            <view class="meent_time">{{item.start_time}} {{item.expired_time}}</view>
+            
+          </view>
+          <view >
+            <view class="meent_peo left">{{item.lecturer}}</view>
+            <view class="headlines right">{{item.address}}</view>
+            <view class="clear"></view>
+          </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!--底部导航-->
+  <view class="footer {{isIphoneX?'isIPX':''}}">
+    <navigator class="nav nav1 nav_on" hover-class='nav_on nav_on1 none'  url="/pages/index/index" open-type="redirect">会议日程</navigator>
+    <view bindtap="click" class="nav nav2" hover-class='nav_on2'></view>
+    <navigator  class="nav nav3" hover-class='nav_on nav_on3 none'  url="/pages/meet_data/meet_data" open-type="redirect">会议资料</navigator>
+    <view class="clear"></view>
+  </view>
+</view>
+
+<!--弹窗-->
+	<!-- <view class="Pop_up_layer {{ showDialog ? 'zan-dialog--show' : '' }}" >
+		<view class="Pop_up_cont">
+      <view style="layer_con" style="width:100%;text-align:center;">
+        <text>{{mes}}</text>
+      </view>
+        <button class="close" hover-class='none' bindtap="close"><image src="/imgs/close.png"></image></button>
+		</view>
+    
+	</view> -->
+
+  <!--弹窗-->
+	<view class="Pop_up_layer {{ showDialog2 ? 'zan-dialog--show2' : '' }}" >
+    <view class="layer_cent">
+      <view class="Pop_up_cont Pop_up_cont2">
+        <view class="layer_con" style="text-align:center;">
+          <text>用户信息已失效，点击重新授权。</text>
+        </view>
+        
+      </view>
+      <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="clock_but">
+        <view class="clock">确定</view>
+      </button>
+    </view>
+		
+	</view>

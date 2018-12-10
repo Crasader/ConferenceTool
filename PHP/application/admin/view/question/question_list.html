@@ -1,0 +1,94 @@
+<!--<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>题库列表</h3>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="搜索...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>题库列表</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <form action="" method="get">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="搜索标题..." name="search" value="{$search}">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" id="search-btn">Go!</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_content">
+                {empty name="list"}
+                <div class="no-data">o(╥﹏╥)o 暂无数据</div>
+                {else /}
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action my-table">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">ID </th>
+                                <th class="column-title">标题 </th>
+                                <th class="column-title">类型 </th>
+                                <th class="column-title">状态 </th>
+                                <th class="column-title">创建时间 </th>
+                                <th class="column-title no-link last">操作 </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {volist name="list" id="vo"}
+                            <tr class="odd pointer">
+                                <td class=" ">{$vo.id}</td>
+                                <td class=" ">{$vo.title}</td>
+                                <td class=" ">{$vo.question_type}</td>
+                                <td class=" ">{$vo.status}</td>
+                                <td class=" ">{$vo.created_at}</td>
+                                <td class=" ">
+                                    <a href="{:url('question/index',['qid'=>$vo.id])}" class="btn btn-primary">查看</a>
+                                    <!--<a href="" class="btn btn-danger">删除</a>-->
+                                </td>
+                            </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pages">
+                    {:$list->render()}
+                </div>
+                {/empty}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('#search-btn').on('click',function(){
+            //var content = $(this).parent().prev().val();
+            //if(!$.trim(content)) return false;
+
+            $(this).parents('form').submit();
+        })
+    })
+</script>

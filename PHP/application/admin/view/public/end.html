@@ -1,0 +1,42 @@
+<footer>
+    <div style="text-align: center">
+        CopyRight (C) CiiC 2018
+    </div>
+    <div class="clearfix"></div>
+</footer>
+<!-- /footer content -->
+</div>
+</div>
+<script>
+    //当前会议的url,为了左侧菜单高亮
+    let currentConferenceUrl = "{$currentConferenceUrl}";
+    console.log( '下面是原始js获取的当前页面的额url:' );
+    console.log( window.location.href );
+    console.log( '下面是手动拼接的url:' );
+    console.log( currentConferenceUrl );
+
+</script>
+
+<script src="__STATIC__/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="__STATIC__/build/js/custom.min.js"></script>
+<script type="text/javascript" src="__STATIC__/vendors/select2/dist/js/select2.full.min.js"></script>
+<script src="__STATIC__/vendors/iCheck/icheck.min.js"></script>
+<!--时间插件start-->
+<script src="__STATIC__/vendors/moment/min/moment.min.js"></script>
+<script src="__STATIC__/js/datepicker/daterangepicker.js"></script>
+<script src="__STATIC__/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<!--时间插件end-->
+<!--上传js-->
+<script src="__STATIC__/js/layer-v3.1.1/layer/layer.js"></script>
+<script src="__STATIC__/js/upload/upload.js"></script>
+<script src="__STATIC__/js/common.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        //todo
+        $(".cancel-btn").on('click',function(){
+            history.back();
+        });
+
+    })
+</script>

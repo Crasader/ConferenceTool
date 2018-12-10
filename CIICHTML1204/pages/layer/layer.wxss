@@ -1,0 +1,10 @@
+/* pages/layer/layer.wxml.wxss */
+.Pop_up_cont2 {
+width:453rpx;
+height:194rpx;
+background:url("https://shanghaiciic.ulcampaign.com/miniProgramImg/20181204/layer_bj2.png");
+background-size:cover;
+position:absolute;
+top:0;
+
+}

@@ -1,0 +1,59 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CiiC后台登录</title>
+
+    <!-- Bootstrap -->
+    <link href="__STATIC__/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="__STATIC__/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="__STATIC__/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="__STATIC__/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="__STATIC__/build/css/custom.min.css" rel="stylesheet">
+    <script src="__STATIC__/vendors/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body class="login">
+<div>
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+                <form id="ciic_form" data-url = "{$submit_url}">
+                    <h1>CiiC管理员登录</h1>
+                    <div>
+                        <input type="text" name="account" class="form-control" placeholder="用户名" required="" />
+                    </div>
+                    <div>
+                        <input type="password" name="pwd" class="form-control" placeholder="密码" required="" />
+                    </div>
+                    <div>
+                        <a class="btn btn-default submit" href="#" onclick="login.submit()">登录</a>
+                        <a class="reset_pass" onclick="alert('请联系工作人员!')" href="#">忘记密码?</a>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <!--<input type="hidden" name="__token__" value="{$Request.token}" />//表单令牌-->
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+<script >
+    let adminIndexUrl = "{:url('index')}";
+</script>
+<script src="__STATIC__/js/login.js?v=123"></script>
+<script src="__STATIC__/js/layer-v3.1.1/layer/layer.js"></script>
+
+</body>
+</html>

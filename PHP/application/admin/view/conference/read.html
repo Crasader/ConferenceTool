@@ -1,0 +1,152 @@
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>查看会议</h3>
+                    </div>
+                    <div class="title_right">
+                        <a href="{:url('surveyResult/index',['cid'=>$Request.param.conference_id])}" target="_blank" class="btn btn-info pull-right">前往大屏统计</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_content">
+                <form  id="submitForm" class="form-horizontal form-label-left" novalidate>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">会议名称 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="conference_name" placeholder="请输入会议名称..." required="required" type="text" value="{$data.conference_name}">
+                        </div>
+                    </div>
+
+                    <!--<div class="item form-group">-->
+                        <!--<label class="control-label col-md-3 col-sm-3 col-xs-12" >会议介绍-->
+                        <!--&lt;!&ndash;<label class="control-label col-md-3 col-sm-3 col-xs-12" >会议介绍 <span class="required">*</span>&ndash;&gt;-->
+                        <!--</label>-->
+                        <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                            <!--<textarea id="textarea" required="required" name="description" class="form-control col-md-7 col-xs-12" >{$data.description}</textarea>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">大屏图片
+                        <!--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">大屏图片 <span class="required">*</span>-->
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <span class="btn btn-success file-button">
+                                <span>上传图片</span>
+                                <input type="file" onchange="Upload.Upload(this)" >
+                            </span>
+                            <span>
+                                <input type="hidden" name="conference_big_img" value="{$data.conference_big_img}" >
+                                <img style="width: 60px;height: 60px;" src="{$filePath}{$data.conference_big_img}" alt="" ></span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">引导页图片 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <span class="btn btn-success file-button">
+                                <span>上传图片</span>
+                                <input type="file" onchange="Upload.Upload(this)" >
+                            </span>
+                            <span>
+                                <input type="hidden" name="conference_img" value="{$data.conference_img}" >
+                                <img style="width: 60px;height: 60px;" src="{$filePath}{$data.conference_img}" alt="">
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-6" for="name">开始时间 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker_1">
+                                    <input type="text" name="start_time" class="form-control" value="{$data.start_time}"  >
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-6" for="name">结束时间 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker_2">
+                                    <input type="text" name="expired_time" class="form-control" value="{$data.expired_time}"  >
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >状态 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="flat" name="status" value="0" {if !$data.status} checked {/if} > 未发布
+                                </label>
+                                <label>
+                                    <input type="radio" class="flat" name="status" value="1" {if $data.status} checked {/if}> 已发布
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">会议小程序码 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <span>
+                                <img style="width: 120px;height: 120px;" src="{$path}{$data.id}.png?v={:time()}" alt="">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <input type="hidden" name="id" value="{$data.id}">
+                            <button  type="button" onclick="create.submit()"  class="btn btn-success">提交</button>
+                            <button  type="button" onclick="create.delete('{$data.id}')"  class="btn btn-danger">删除</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/js/conference/create.js"></script>
+<script>
+    let uploadUrl = "{:url('Upload/upload')}";
+    let submitUrl = "{:url('save')}";
+    let deleteUrl = "{:url('delete')}";
+    let filePath = "{$filePath}";
+    console.log( 'filePath' );
+    console.log( filePath );
+    $(function () {
+        $('#datetimepicker_1,#datetimepicker_2').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm',
+        });
+    });
+
+
+
+</script>

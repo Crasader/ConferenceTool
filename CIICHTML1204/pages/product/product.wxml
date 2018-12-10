@@ -1,0 +1,50 @@
+<!--pages/product/product.wxml-->
+<view wx:if="{{background_show}}">
+  <view class="video" wx:if="{{show_vi}}">
+    <video id="myVideo" controls='true' class="myVideo" src="{{medias_vi}}" custom-cache="{{false}}"></video>
+
+      <cover-view class="controls" style="display:{{tab_image}};z-index:11" bindtap='bindplay'>
+        <cover-image src="{{cover_img}}" />
+      </cover-view>
+      <cover-view class="play {{hidePlay=='true'?'hide':''}}" style="z-index:200;" bindtap="bindplay">
+        <cover-image bindtap="bindplay" src="/imgs/paly.png" style="width:100%;" />
+      </cover-view>
+ 
+  </view>
+
+  <view class="product_img" wx:for="{{medias_img}}">
+    <image src="{{item.url}}" mode="widthFix"></image>
+  </view>
+
+
+</view>
+
+<view style="height:auto;position:fixed;top:0;left:0;bottom:0;right:0;width:100%;z-index:999;" wx:if="{{show_id_bgc}}">
+  <navigator target="miniProgram" open-type="navigate" app-id="{{redirect_appid}}" path="{{}}" extra-data="{{}}" version="release">
+   <image src='../../../imgs/ld_bgc.png' mode='widthFix' style='width:100%;height100%;'bindtap="enter_ld"></image>
+  </navigator>
+
+</view>
+
+<!-- 按钮 -->
+<!-- <block wx:if="{{ld_show}}">
+  
+</block> -->
+<!--弹窗2-->
+<!-- <view class="Pop_up_layer {{ showDialog2 ? 'zan-dialog--show2' : '' }}" >
+    <view class="layer_cent">
+      <view class="Pop_up_cont Pop_up_cont2">
+        <view class="layer_con" style="text-align:center;">
+          <text>用户信息已失效，点击重新授权。</text>
+        </view>
+          
+      </view>
+      <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="clock_but">
+        <view class="clock">确定</view>
+      </button>
+    </view>
+		
+	</view> -->
+<!-- 声明需要使用的模板文件 -->
+<import src="/pages/layer/layer.wxml" />
+<template is="layer123" data="{{showDialog2:showDialog2,path:my_direct}}" />

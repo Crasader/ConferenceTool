@@ -1,0 +1,65 @@
+<!--pages/meet_data/meet_data.wxml-->
+<view>
+  <image src="/imgs/index_bj.jpg" style="width:100%;height:100%;position:fixed;left:0;top:0;z-index:-1;"></image>
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower"  class="list_box">
+    <!--会义资料-->
+    <view class="a">
+      <view class="title text_align">
+        <text>会议资料</text>
+      </view>
+      <view >
+        <view class="data_bj data_bj_bottom"><image src="/imgs/top.png"></image></view>
+        <view class="data_list">
+        
+          <view class="data_box display" wx:for="{{met}}">
+            <view class="data_name fix">
+              {{item.asset_title}}
+            </view>
+            <button class="clock"  bindtap='clock' bindtap="Assets" data-id='{{item.id}}'  data-url='{{item.url}}'>
+              查看
+            </button>
+          </view>
+        </view>
+        
+        <view class="data_bj data_bj_top"><image src="/imgs/bottm.png"></image></view>
+      </view>
+    </view>
+    <!--新品推介-->
+    <view class="a" wx:if="{{interest}}">
+      <view class="title text_align">
+        <text>我的兴趣</text>
+      </view>
+      <view>
+        <view class="data_bj data_bj_bottom"><image src="/imgs/top.png"></image></view>
+         <!-- <scroll-view scroll-y="true" style='height:123px;'> -->
+        <view class="data_list">
+          <view class="data_box display"  wx:for="{{prod}}">
+            <view class="data_name fix">
+              {{item.product_name}}
+            </view>
+            <button class="clock" data-name='{{item.product_name}}'  bindtap="Product" data-id='{{item.id}}'>
+              查看
+            </button>
+          </view>
+          
+        </view>
+         <!-- </scroll-view> -->
+        <view class="data_bj data_bj_top"><image src="/imgs/bottm.png"></image></view>
+       
+      </view>
+    </view>
+  </scroll-view>
+
+  
+  <!--底部导航-->
+  <view class="footer">
+    <view class="nav nav1"  bindtap='goIndex' hover-class='nav_on nav_on1'   >会议日程</view>
+    <view bindtap="click" class="nav nav2" hover-class='nav_on2'></view>
+    <view  class="nav nav3  nav_on" bindtap='goMeet_data'  hover-class='nav_on nav_on3'   >会议资料</view>
+    <view class="clear"></view>
+  </view>
+</view>
+
+ <!-- 声明需要使用的模板文件 -->
+<import src ="/pages/layer/layer.wxml"/>
+<template is="layer123" data="{{showDialog2:showDialog2,path:'/pages/meet_data/meet_data'}}" />

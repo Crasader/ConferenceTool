@@ -1,0 +1,15 @@
+/* pages/welcome1/welcome1.wxss */
+button{
+  padding:0;
+  margin:0;
+position: absolute;
+  bottom:250rpx;
+   left:50%;
+    margin-left:-144.5rpx;
+}
+.click{
+  display: block;
+  z-index: 33;
+  height: 76rpx;
+  width:290rpx;
+}

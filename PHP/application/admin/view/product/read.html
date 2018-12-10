@@ -1,0 +1,51 @@
+{__NOLAYOUT__}
+{include file="public/header" /}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>产品媒体</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="x_content">
+                <form id="submitForm" class="form-horizontal form-label-left" novalidate>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">产品小程序码<span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            </span>
+                            <span>
+            <img style="width: 120px;height: 120px;" src="{$path}{$list.0.product_id}.png?v={:time()}" alt="">
+                    </span>
+                        </div>
+                    </div>
+
+                    {foreach $list as $key=>$vo }
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{if $vo.media_type}产品视频{else
+                            /}产品图片{/if} <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            </span>
+                            <span>
+                    {if $vo.media_type}
+            <video controls src="{$filePath}{$vo.url}"></video>
+            {else /}
+            <img style="width: 60px;height: 60px;" src="{$filePath}{$vo.url}" alt="">
+            {/if}
+                    </span>
+                        </div>
+                    </div>
+                    {/foreach}
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

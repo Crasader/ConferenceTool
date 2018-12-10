@@ -1,0 +1,2 @@
+<!--pages/assets/assets.wxml-->
+<web-view src="{{url}}"></web-view>

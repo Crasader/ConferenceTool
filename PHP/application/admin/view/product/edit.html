@@ -1,0 +1,184 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>编辑产品</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_content">
+                <form id="submitForm" class="form-horizontal form-label-left" novalidate>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">产品品牌 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                                   data-validate-words="2" name="product[brand]"  required="required" value="{$list->brand}"
+                                   type="text">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">品牌Logo <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                    <span class="btn btn-success file-button">
+                    <span>上传Logo</span>
+                    <input type="file" onchange="Upload.Upload(this)">
+                    </span>
+                    <span>
+                    <input type="hidden" name="product[brand_logo]" value="{$list->brand_logo}">
+                    <img style="width: 60px;height: 60px;" src="{$filePath}{$list->brand_logo}" alt="">
+                    </span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">产品名称 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                                   data-validate-words="2" name="product[product_name]" required="required" value="{$list->product_name}"
+                                   type="text">
+                        </div>
+                    </div>
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">产品图片 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                    <span class="btn btn-success file-button">
+                    <span>上传图片</span>
+                    <input type="file" onchange="Upload.Upload(this)">
+                    </span>
+                    <span>
+                    <input type="hidden" name="product_media[0][url]" value="{$list->product_media[0]->url}">
+                    <img style="width: 60px;height: 60px;" src="{$filePath}{$list->product_media[0]->url}" alt="">
+                    </span>
+                        </div>
+                    </div>
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">产品视频 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                    <span class="btn btn-success file-button">
+                    <span>上传视频</span>
+                    <input type="file" onchange="Upload.Upload(this)">
+                    </span>
+                            <span>
+                    <input type="hidden" name="product_media[1][url]" value="{$list->product_media[1]->url}">
+                    <video id="product_video" controls  src="{$filePath}{$list->product_media[1]->url}" ></video>
+                    </span>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">视频封面 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                    <span class="btn btn-success file-button">
+                    <span>上传封面</span>
+                    <input type="file" onchange="Upload.Upload(this)">
+                    </span>
+                            <span>
+                    <input type="hidden" name="product[cover_img]" value="">
+                    <img style="width: 60px;height: 60px;" src="{$filePath}{$list->cover_img}" alt="">
+                    </span>
+                        </div>
+                    </div>
+
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">是否跳转指定小程序 <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12" >
+                            <div class="radio" >
+                                <label>
+                                    <input type="radio" class="flat"   name="product[is_redirect]" value="1" {if $list.is_redirect } checked="checked" {/if} > 是
+                                </label>
+                                <label>
+                                    <input type="radio" class="flat"  name="product[is_redirect]" value="0" {if !$list.is_redirect } checked="checked" {/if} > 否
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--跳转小程序的参数-->
+                    <div id="redirect_box" {if !$list->is_redirect } style="display: none;" {/if} >
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">目标小程序APPID <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                                       data-validate-words="2" name="product[redirect_appid]" placeholder="请输入目标小程序APPID..." required="required"
+                                       type="text" value="{$list.redirect_appid}">
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">目标小程序的路径
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                                       data-validate-words="2" name="product[redirect_path]" placeholder="请输入目标小程序的路径..." required="required"
+                                       type="text" value="{$list.redirect_path}">
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">目标小程序的数据
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                                       data-validate-words="2" name="product[redirect_extra_data]" placeholder="请输入目标小程序的数据..." required="required"
+                                       type="text" value="{$list.redirect_extra_data}">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <!--上传图片需要的参数-->
+                            <input type="hidden" name="product_media[0][id]" value="{$list->product_media[0]->id}">
+                            <input type="hidden" name="product_media[0][media_flag]" value="0">
+                            <input type="hidden" name="product_media[0][media_type]" value="0">
+                            <!--上传视频需要的参数-->
+                            <input type="hidden" name="product_media[1][id]" value="{$list->product_media[1]->id}">
+                            <input type="hidden" name="product_media[1][media_flag]" value="1">
+                            <input type="hidden" name="product_media[1][media_type]" value="1">
+
+                            <!--产品id-->
+                            <input type="hidden" name="product[id]" value="{$list->id}">
+
+                            <button type="button" onclick="create.submit()" class="btn btn-success">提交</button>
+                            <button  type="button" onclick="history.go(-1)"  class="btn btn-success">返回</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/js/product/create.js"></script>
+<script>
+    let uploadUrl = "{:url('Upload/upload')}";
+    let submitUrl = "{:url('save')}";
+    let filePath = "{$filePath}";
+    $(function () {
+        $('#datetimepicker_1,#datetimepicker_2').datetimepicker({
+            format: 'HH:mm',
+        });
+    });
+
+
+</script>

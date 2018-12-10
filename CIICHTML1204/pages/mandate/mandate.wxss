@@ -1,0 +1,11 @@
+/* pages/mandate/mandate.wxss */
+.click{
+  width:240rpx;
+  height:70rpx;
+  /* margin:0 auto;
+  margin-top:635rpx; */
+  
+}
+.isIPX{
+  margin-top:720rpx;
+}

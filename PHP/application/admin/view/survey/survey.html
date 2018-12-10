@@ -1,0 +1,246 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>{$sid?'编辑':'新建'}问卷</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_content">
+                {empty name="agenda"}
+                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    该会议还没有添加相关议程，请先
+                    <a class="btn btn-default" href="{:url('agenda/index',['conference_id'=>$Request.param.conference_id])}">添加相关议程</a>
+                    ，否则可能无法创建成功！
+                </div>
+                {/empty}
+                {empty name="questions"}
+                <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    系统内没有可用的题目，请先
+                    <a class="btn btn-default" href="{:url('question/index')}">新建问题</a>
+                    ，否则可能无法创建成功！
+                </div>
+                {/empty}
+
+                <form class="form-horizontal form-label-left" novalidate id="survey-form">
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">问卷标题 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"
+                                   data-validate-words="2" name="survey_title" placeholder="请输入问卷标题..." required="required"
+                                   type="text" value="{$data.survey_title??''}">
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">相关议程 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select name="agenda_id" id="agenda-select" class="form-control" style="width:100%">
+                                <option></option>
+                                {volist id="vo" name="agenda"}
+                                <option value="{$key}">{$vo}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">问卷描述
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                            <textarea name="survey_description" class="form-control col-md-7 col-xs-12" placeholder="请输入问卷描述...">{$data.survey_description}</textarea>
+
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">题目选择
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div id="questions">
+                                {empty name="data"}
+                                <div class="question-section">
+                                    <select name="question[]" class="question-select form-control" style="width:75%">
+                                        <option></option>
+                                    </select>
+                                    <button class="btn btn-danger del-btn" type="button">删除</button>
+                                    <hr>
+                                </div>
+                                {else/}
+                                    {volist id="vo1" name="data.question" key="k"}
+                                    <div class="question-section">
+                                        <select name="question[]" class="question-select form-control" style="width:75%" data-ori="{$vo1.question_id}">
+                                            <option></option>
+                                        </select>
+                                        <button class="btn btn-danger del-btn" type="button">删除</button>
+                                        <hr>
+                                    </div>
+                                    {/volist}
+                                {/empty}
+                            </div>
+                            <button class="btn btn-primary add-btn" type="button">添加选项</button>
+
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">是否启用 <span
+                                class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="flat" checked="checked" name="status" value="1" {if !isset($data.status) || $data->getData('status')==1}checked{/if}> 启用
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="flat" name="status" value="0" {if isset($data.status) && $data->getData('status')==0}checked{/if}> 不启用
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    {if $sid}
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">小程序码
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <span>
+                                <img style="width: 200px;height: 200px;" src="{$path}{$data.id}.png?v={:time()}" alt="">
+                            </span>
+                        </div>
+                    </div>
+                    {/if}
+
+                    <input type="hidden" name="id" value="{$sid}" id="sid">
+                    <input type="hidden" name="conference_id" value="{$cid}" id="cid">
+                    {:token()}
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button id="send" type="button" class="btn btn-success">{$sid?'保存':'新建'}</button>
+                            <button type="button" class="btn btn-primary cancel-btn">返回</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="question-section copy-zone">
+    <select name="question[]" class="question-select form-control" style="width:75%">
+        <option></option>
+    </select>
+    <button class="btn btn-danger del-btn" type="button">删除</button>
+    <hr>
+</div>
+<script src="__STATIC__/js/sortable/sortable.min.js"></script>
+
+<script>
+    var questions = {$questions|raw|htmlspecialchars=ENT_NOQUOTES};
+    var this_question;
+    $(function(){
+        var sid = $('#sid').val();
+        var agenda = {$data.agenda_id??0};
+        var agenda_select = $('#agenda-select');
+
+        agenda_select.select2({
+            placeholder: "请选择相关日程...",
+            allowClear: true,
+            language: "zh-CN"
+        });
+
+        if(agenda){
+            agenda_select.val(agenda).trigger('change');
+        }
+
+        $(".question-select").select2({
+            placeholder: "请选择相关问题...",
+            allowClear: true,
+            language: "zh-CN",
+            data:questions
+        });
+
+        if(sid){
+            $('#questions .question-select').each(function(){
+                var ori = $(this).data('ori');
+                $(this).val(ori).trigger('change');
+            })
+        }
+
+        $('.add-btn').on('click',function(){
+            $(".question-select").select2("destroy");
+
+            $('.question-section.copy-zone').clone(true).removeClass('copy-zone').appendTo('#questions');
+
+            $(".question-select").select2({
+                placeholder: "请选择相关问题...",
+                allowClear: true,
+                language: "zh-CN",
+                data:questions
+            });
+
+        })
+
+        $('.del-btn').on('click',function(){
+            this_question = $(this);
+            if($('#questions .question-section').length<=1){
+                layer.msg('题目个数不得少于1个',{icon:2});
+                return false;
+            }
+            layer.confirm('确定要删除该选项吗?', {icon: 3, title: '提示'},
+                function (index) {
+                    //do something
+
+                    this_question.parents('.question-section').detach();
+                    layer.close(index);
+                });
+        })
+
+        //拖动
+        var rlist = document.getElementById('questions');
+        var sortable = Sortable.create(rlist, {
+            group:'.question-section',
+            handle:'.question-section',
+            //filter: '.js-remove',
+            animation: 150,
+            ghostClass:'option-moving',
+            draggable: ".question-section",
+            //chosenClass: "option-chosen",  // Class name for the chosen item
+
+        });
+
+        $('#send').on('click',function () {
+            var data = $('#survey-form').serialize();
+
+            $.ajax({
+                type:'POST',
+                url:'{:url("survey/save")}',
+                dataType:'json',
+                data:data,
+                success:function(res){
+                    if(res.code=='200'){
+                        layer.msg('操作成功', {time: 2000, icon:6},function(){
+                            window.location.href="{:url('survey/surveylist',['conference_id'=>$Request.param.conference_id])}";
+                        });
+                    }else{
+                        $('input[name=__token__]').val(res.data.token);
+                        layer.msg(res.msg, {time: 5000, icon:2});
+                    }
+                },
+                error:function () {
+
+                }
+            });
+
+            return false;
+        })
+
+    })
+</script>

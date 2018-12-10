@@ -1,0 +1,27 @@
+{
+  "pages":[
+     "pages/mandate/mandate",
+    "pages/welcome1/welcome1",
+    "pages/product/product",
+    "pages/index/index",
+    
+        "pages/welcome2/welcome2",
+    
+"pages/meet_survey/meet_survey",
+      
+    "pages/assets/assets",
+   "pages/meet_data/meet_data",
+    
+    "pages/Scan/Scan",
+    "pages/logs/logs"
+],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wxa95448f770fbd88e"
+  ]
+}
